@@ -1,0 +1,85 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+@import '~admin-lte/dist/css/adminlte.min.css';
+
+//Font Awesome
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/brands';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~sweetalert2/dist/sweetalert2.min.css';
+
+
+// @font-face {
+//     font-family: myArial;
+//     src: url('/fonts/CovesBold.otf');
+//     unicode-range: U+0-10FFFF;
+//   }
+
+body{
+    font-family:'Times New Roman', Times, serif;
+    font-size: 15px;
+    .btn{
+        border-radius:0px;
+    }
+    small{
+        color:#E74C3C;
+    }
+    .form-control{
+        border: 1px solid #000000;
+        border-radius:0px;
+        padding: 5px;
+    }   
+    .form-control:focus{
+        border-radius:0px;
+        border: 1px solid #808B96;
+    }   
+    .btn-out{
+        border:1px solid #CCD1D1;
+        color: #000000;
+        outline:none;
+        text-decoration: none;
+    }
+    .btn-out:hover{
+        color: #CCD1D1;
+    }
+    #wrap{
+        font-family: myArial;
+    }
+
+    #user-cart{
+        height: 290px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        .qty{
+            width: 50px;
+            padding : 5px;
+        }
+        .trash{
+            padding: 0px;
+        }
+        .tr-can {
+           width: 35px;
+        }
+    }
+
+    #item-cart{
+        max-height: 550px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+
+    .disc-card{
+        margin-top :-13px;
+        .vertical {
+            width : 50%;
+        }
+    }
+
+}
