@@ -3,7 +3,7 @@
 
 
 @section('title')
-    DISCOUNTS
+127.0.0.1
 @endsection
 @section('content')
 
@@ -83,9 +83,10 @@
 
 @section('js')
 <script>
+
     $(document).ready(function(){
-    $('.discount').addClass('active');
-});
+        $('#discount').addClass('focus');
+    })
 
     $(document).on('click', '.btn-delete', function(){
         var id = $(this).attr('id');

@@ -13,7 +13,7 @@
   </style>
 @endsection
 @section('title')
-    INCOMES
+127.0.0.1
 @endsection
 
 @section('content')
@@ -61,7 +61,7 @@
                     <th rowspan="1" colspan="8">DETAILS</th>
                 </tr>
                 <tr class="bg-primary">
-                    <th rowspan="2">DRUG NAME</th>
+                    <th rowspan="2">ITEM NAME</th>
                     <th rowspan="2">SOLD QTY</th>
                     <th rowspan="2">UNIT COST</th>
                     <th rowspan="2">DISCOUNT</th>
@@ -86,6 +86,10 @@
 <br><script src = "https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js" defer ></script>
   
 <script>
+    $(document).ready(function(){
+        $('#income').addClass('focus');
+    });
+
     $(document).ready(function(){
         $('.incomes').addClass('active');
         $('.acc-menu').addClass('menu-open');

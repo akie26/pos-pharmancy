@@ -14,18 +14,20 @@
 @endsection
 
 @section('title')
-    PRODUCTS
+    127.0.0.1
 @endsection
 
 @section('content')
  <table class="table table-bordered text-center" id="products_datatable">
     <thead>
        <tr>
-          <th>DRUG NAME</th>
+          <th>ITEM NAME</th>
           {{-- <th>MANUFACTURER COUNTRY</th> --}}
-          <th>MANUFACTURER COMPANY</th>
-          <th>EXPIRE DATE</th>
-          <th>ORIGINAL PRICE</th>
+          <th>BRAND</th>
+          <th>DETAIL</th>
+          <th>SIZE</th>
+          <th>CODE</th>
+          {{-- <th>ORIGINAL PRICE</th> --}}
           <th>SELLING PRICE</th>
           <th>QTY</th>
           {{-- @role('admin') --}}
@@ -52,41 +54,32 @@
             <form method="post" id="sample_form" class="form-horizontal">
                 @csrf
             <div class="form-group">
-              <label for="drug_name">DURG NAME</label>
+              <label for="item_name">ITEM NAME</label>
               <input type="text"
-                class="form-control" name="drug_name" id="drug_name" aria-describedby="helpId" placeholder=""  autocomplete="off">
+                class="form-control" name="item_name" id="item_name" aria-describedby="helpId" placeholder=""  autocomplete="off">
             </div>
             <div class="form-group">
-                <label for="chemical_name">CHEMICAL NAME</label>
+                <label for="size">SIZE</label>
                 <input type="text"
-                  class="form-control" name="chemical_name" id="chemical_name" aria-describedby="helpId" placeholder="" value="" autocomplete="off">
+                  class="form-control" name="size" id="size" aria-describedby="helpId" placeholder="" value="" autocomplete="off">
               </div>
               <div class="form-group">
-                <label for="manufacturer_country">MANUFACTURER COUNTRY</label>
+                <label for="brand">BRAND</label>
                 <input type="text"
-                  class="form-control" name="manufacturer_country" id="manufacturer_country" aria-describedby="helpId" placeholder="" value="" autocomplete="off">
+                  class="form-control" name="brand" id="brand" aria-describedby="helpId" placeholder="" value="" autocomplete="off">
               </div>
               <div class="form-group">
-                <label for="manufacturer_company">MANUFACTURER COMPANY</label>
+                <label for="detail">DETAILS</label>
                 <input type="text"
-                  class="form-control" name="manufacturer_company" id="manufacturer_company" aria-describedby="helpId" placeholder="" value="" autocomplete="off">
+                  class="form-control" name="detail" id="detail" aria-describedby="helpId" placeholder="" value="" autocomplete="off">
               </div>
               <div class="form-group">
-                <label for="distribution_company">DISTRIBUTION COMPANY</label>
+                <label for="barcode">BARCODE</label>
                 <input type="text"
-                  class="form-control" name="distribution_company" id="distribution_company" aria-describedby="helpId" placeholder="" value="" autocomplete="off">
+                  class="form-control" name="barcode" id="barcode" aria-describedby="helpId" placeholder="" value="" autocomplete="off">
               </div>
           </div>
           <div class="col">
-            <div class="form-group"> 
-                <label for="expire_date">EXPIRE DATE</label>
-                <input class="form-control @error('expire_date') is-invalid @enderror" id="expire_date" name="expire_date" placeholder="" type="text" value="" autocomplete="off"/>
-                @error('expire_date')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-              </div>
               <div class="form-group">
                 <label for="original_price">ORIGINAL PRICE</label>
                 <input type="text"
@@ -124,6 +117,10 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <br><script src = "https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js" defer ></script>
 <script>
+    $(document).ready(function(){
+        $('#products').addClass('focus');
+    });
+
     $(document).ready( function () {
      $('#products_datatable').DataTable({
             processing: true,
@@ -135,16 +132,17 @@
               $('div.toolbar').html('<button type="button" data-target=".bd-example-modal-lg-edit" data-toggle="modal" name="edit" id="Add" class="add-btn btn btn-primary btn-sm"><i class="fas fa-plus"></i>&nbsp;ADD ITEMS</button>');
             },
             columns: [
-                     { data: 'drug_name', name: 'drug_name' },
-                    //  { data: 'manufacturer_country', name: 'manufacturer_country' },
-                     { data: 'manufacturer_company', name: 'manufacturer_company' },
-                     { data: 'expire_date', name: 'expire_date' },
-                     {
-                        data: 'original_price',
-                        render: function ( data, type, row ) {
-                            return data+ ' MMK';
-                        }
-                    },
+                     { data: 'item_name', name: 'item_name' },
+                     { data: 'brand', name: 'brand' },
+                     { data: 'detail', name: 'detail' },
+                     { data: 'size', name: 'size' },
+                     { data: 'barcode', name: 'barcode' },
+                    //  {
+                    //     data: 'original_price',
+                    //     render: function ( data, type, row ) {
+                    //         return data+ ' MMK';
+                    //     }
+                    // },
                     {
                         data: 'selling_price',
                         render: function ( data, type, row ) {
@@ -187,11 +185,11 @@ $(document).ready(function(){
             dataType : 'json',
             success:function(data){
                 $('#hidden_id').val(data.id);
-                $('#drug_name').val(data.drug_name);
-                $('#chemical_name').val(data.chemical_name);
-                $('#manufacturer_country').val(data.manufacturer_country);
-                $('#manufacturer_company').val(data.manufacturer_company);
-                $('#distribution_company').val(data.distribution_company);
+                $('#item_name').val(data.item_name);
+                $('#size').val(data.size);
+                $('#brand').val(data.brand);
+                $('#detail').val(data.detail);
+                $('#barcode').val(data.barcode);
                 $('#expire_date').val(data.expire_date);
                 $('#original_price').val(data.original_price);
                 $('#selling_price').val(data.selling_price);

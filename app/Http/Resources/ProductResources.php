@@ -17,12 +17,11 @@ class ProductResources extends JsonResource
     {
         return [
             'id' => $this->id,
-            'drug_name' => $this->drug_name,
-            'chemical_name' => $this->chemical_name,
-            'manufacturer_country' => $this->manufacturer_country,
-            'manufacturer_company' => $this->manufacturer_company,
-            'distribution_company' => $this->distribution_company,
-            'expire_date' => $this->expire_date,
+            'item_name' => $this->item_name,
+            'brand' => $this->brand,
+            'size' => $this->size,
+            'detail' => $this->detail,
+            'barcode' => $this->barcode,
             'original_price' => $this->original_price,
             'selling_price' => $this->selling_price,
             'quantity' => $this->quantity,

@@ -1,85 +1,185 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url("https://fonts.googleapis.com/css?family=Nunito");
 
 // Variables
-@import 'variables';
+@import "variables";
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
 
-@import '~admin-lte/dist/css/adminlte.min.css';
+@import "~admin-lte/dist/css/adminlte.min.css";
 
 //Font Awesome
-@import '~@fortawesome/fontawesome-free/scss/fontawesome';
-@import '~@fortawesome/fontawesome-free/scss/brands';
-@import '~@fortawesome/fontawesome-free/scss/solid';
-@import '~sweetalert2/dist/sweetalert2.min.css';
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/brands";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~sweetalert2/dist/sweetalert2.min.css";
 
+@font-face {
+    font-family: myArial;
+    src: url("/fonts/CovesBold.otf");
+    unicode-range: U+0-10FFFF;
+}
 
-// @font-face {
-//     font-family: myArial;
-//     src: url('/fonts/CovesBold.otf');
-//     unicode-range: U+0-10FFFF;
-//   }
-
-body{
-    font-family:'Times New Roman', Times, serif;
+body {
+    font-family: myArial;
     font-size: 15px;
-    .btn{
-        border-radius:0px;
+    .btn {
+        border-radius: 0px;
     }
-    small{
-        color:#E74C3C;
+    small {
+        color: #e74c3c;
     }
-    .form-control{
+    .form-control {
         border: 1px solid #000000;
-        border-radius:0px;
+        border-radius: 0px;
         padding: 5px;
-    }   
-    .form-control:focus{
-        border-radius:0px;
-        border: 1px solid #808B96;
-    }   
-    .btn-out{
-        border:1px solid #CCD1D1;
+    }
+    .form-control:focus {
+        border-radius: 0px;
+        border: 1px solid #808b96;
+    }
+    .btn-out {
+        border: 1px solid #ccd1d1;
         color: #000000;
-        outline:none;
+        outline: none;
         text-decoration: none;
     }
-    .btn-out:hover{
-        color: #CCD1D1;
+    .btn-out:hover {
+        color: #ccd1d1;
     }
-    #wrap{
+    #wrap {
         font-family: myArial;
     }
 
-    #user-cart{
+    #user-cart {
         height: 290px;
         overflow-y: scroll;
         overflow-x: hidden;
-        .qty{
+        .qty {
             width: 50px;
-            padding : 5px;
+            padding: 5px;
+            margin: auto;
         }
-        .trash{
+        .trash {
             padding: 0px;
         }
         .tr-can {
-           width: 35px;
+            width: 35px;
         }
     }
 
-    #item-cart{
+    #item-cart {
         max-height: 550px;
         overflow-y: scroll;
         overflow-x: hidden;
     }
 
-    .disc-card{
-        margin-top :-13px;
+    .disc-card {
+        margin-top: -13px;
         .vertical {
-            width : 50%;
+            width: 50%;
         }
     }
+}
 
+#wrapper {
+    overflow-x: hidden;
+}
+
+#sidebar-wrapper {
+    min-height: 100vh;
+    -webkit-transition: margin 0.25s ease-out;
+    -moz-transition: margin 0.25s ease-out;
+    -o-transition: margin 0.25s ease-out;
+    transition: margin 0.25s ease-out;
+}
+
+#sidebar-wrapper .sidebar-heading {
+    padding: 1.2rem 1rem 0.875rem 1rem;
+    border-bottom: 1px solid #333;
+}
+
+.navbar {
+    height: 3.9rem;
+    border-bottom: 1px solid #333;
+}
+
+#page-content-wrapper {
+    min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    margin-left: 0;
+}
+
+@media (min-width: 768px) {
+    #sidebar-wrapper {
+        margin-left: 0;
+    }
+
+    #page-content-wrapper {
+        min-width: 0;
+        width: 100%;
+    }
+}
+
+#nav-link {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.list-group-item {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.focus {
+    background-color: #2532ec;
+    color: #0e0d0d;
+}
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    #pos-invoice,
+    #pos-invoice * {
+        visibility: visible;
+    }
+    #pos-invoice {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+        padding: 2px;
+        border: none;
+    }
+}
+
+#pos-invoice {
+    height: 115mm;
+}
+
+.name-shop {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.thead {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.tbody {
+    font-size: 16px;
+    font-weight: 800;
+}
+
+#order-text {
+    margin-top: -10px;
+}
+.table-total {
+    margin-top: -14px;
 }

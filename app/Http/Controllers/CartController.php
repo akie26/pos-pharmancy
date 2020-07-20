@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Customer;
+use App\Models\IncomeDetail;
 use Auth;
 use App\Models\User;
 
@@ -24,18 +25,20 @@ class CartController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'drug_name' => 'required|exists:products,drug_name',
+            'barcode' => 'required|exists:products,barcode',
         ]);
-        $drug_name = $request->drug_name;
-        $cart = $request->user()->cart()->where('drug_name', $drug_name)->first();
-        if($cart){
-            $cart->pivot->quantity = $cart->pivot->quantity + 1;
-            $cart->pivot->save();
-        }else{
-            $product = Product::where('drug_name', $drug_name)->first();
-            $request->user()->cart()->attach($product->id, ['quantity' => 1]);
-            return response('', 204);
-        }
+        $barcode = $request->barcode;
+
+        $cart = $request->user()->cart()->where('barcode', $barcode)->first();
+            if($cart) {
+                $cart->pivot->quantity = $cart->pivot->quantity + 1;
+                $cart->pivot->save();
+            }else{
+                $product = Product::where('barcode', $barcode)->first();
+                 $request->user()->cart()->attach($product->id, ['quantity' => 1]);
+            }
+
+        return response('' , 204);
 
     }
 
@@ -69,6 +72,10 @@ class CartController extends Controller
     {
         $request->user()->cart()->detach($request->product_id);
         return response('', 204);
+    }
+
+    public function reciept(Request $request) {
+        return view('cart.reciept');
     }
 
 }

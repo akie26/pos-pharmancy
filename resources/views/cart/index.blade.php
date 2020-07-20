@@ -1,23 +1,14 @@
 @extends('layouts.default')
-
-@section('css')
+@section('title')
+    127.0.0.1
 @endsection
-
-
- @section('content')
-        
-    <div id="cart"></div>
-
-
- @endsection
-
-
- @section('js')
-    <script>
-        $(document).ready(function(){
-            $('.btn-cart').addClass('cart-active');
-        });
-    </script>    
-
-
- @endsection
+@section('content')
+<div id="cart" class="mt-2"></div>
+@endsection
+@section('js')
+<script>
+    $(document).ready(function(){
+        $('#store').addClass('focus');
+    })
+</script>
+@endsection

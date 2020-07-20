@@ -17020,8 +17020,14 @@ readers do not read off random characters that represent icons */
   font-weight: 900;
 }
 
+@font-face {
+  font-family: myArial;
+  src: url("/fonts/CovesBold.otf");
+  unicode-range: U+0-10FFFF;
+}
+
 body {
-  font-family: "Times New Roman", Times, serif;
+  font-family: myArial;
   font-size: 15px;
 }
 
@@ -17030,7 +17036,7 @@ body .btn {
 }
 
 body small {
-  color: #E74C3C;
+  color: #e74c3c;
 }
 
 body .form-control {
@@ -17041,18 +17047,18 @@ body .form-control {
 
 body .form-control:focus {
   border-radius: 0px;
-  border: 1px solid #808B96;
+  border: 1px solid #808b96;
 }
 
 body .btn-out {
-  border: 1px solid #CCD1D1;
+  border: 1px solid #ccd1d1;
   color: #000000;
   outline: none;
   text-decoration: none;
 }
 
 body .btn-out:hover {
-  color: #CCD1D1;
+  color: #ccd1d1;
 }
 
 body #wrap {
@@ -17068,6 +17074,7 @@ body #user-cart {
 body #user-cart .qty {
   width: 50px;
   padding: 5px;
+  margin: auto;
 }
 
 body #user-cart .trash {
@@ -17090,5 +17097,106 @@ body .disc-card {
 
 body .disc-card .vertical {
   width: 50%;
+}
+
+#wrapper {
+  overflow-x: hidden;
+}
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  transition: margin 0.25s ease-out;
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 1.2rem 1rem 0.875rem 1rem;
+  border-bottom: 1px solid #333;
+}
+
+.navbar {
+  height: 3.9rem;
+  border-bottom: 1px solid #333;
+}
+
+#page-content-wrapper {
+  min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
+}
+
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+}
+
+#nav-link {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.list-group-item {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.focus {
+  background-color: #2532ec;
+  color: #0e0d0d;
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  #pos-invoice,
+  #pos-invoice * {
+    visibility: visible;
+  }
+
+  #pos-invoice {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    padding: 2px;
+    border: none;
+  }
+}
+
+#pos-invoice {
+  height: 115mm;
+}
+
+.name-shop {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.thead {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.tbody {
+  font-size: 16px;
+  font-weight: 800;
+}
+
+#order-text {
+  margin-top: -10px;
+}
+
+.table-total {
+  margin-top: -14px;
 }
 

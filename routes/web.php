@@ -13,37 +13,23 @@ use Spatie\Permission\Traits\HasRoles;
 | contains the "web" middleware group. Now create something great!
 |
 */
-$admin = User::role('admin')->get();
-if($admin){
-    Auth::routes([
-        'register' => false,
-    ]);
-}else{
-    Auth::routes();
-}
 
-
+Auth::routes([
+    'register' => false, // Registration Routes...
+    'reset' => false, // Password Reset Routes...
+    'verify' => false, // Email Verification Routes...
+  ]);
 Route::get('/', function () {
     if(Auth::check()){
-        if(auth()->user()->hasRole('admin')){
-            return view('admin.index');
-        }else{
-            return veiw('home');
-        }
+        return view('home');
     }else{
         return view('auth.login');
     }
 });
 
 
-Route::group(['middleware' => ['auth', 'role:admin' ]], function(){
-    Route::GET('/admin', 'HomeController@admin')->name('admin.index');
-    Route::GET('/admin-view', 'HomeController@adminView');
-    Route::GET('/admin/back', 'HomeController@adminBack')->name('admin.back');
-    Route::POST('/admin-branch', 'HomeController@newBranch');
-});
 
-Route::group(['middleware' => ['auth', 'role:branch']], function(){
+Route::group(['middleware' => ['auth']], function(){
     Route::GET('/home', 'HomeController@index')->name('home');
     Route::GET('/products', 'ProductController@index')->name('products.index');
     Route::GET('/product-list', 'ProductController@productlist');
@@ -62,6 +48,7 @@ Route::group(['middleware' => ['auth', 'role:branch']], function(){
     Route::POST('/cart/checkout', 'AccountingController@cartCheckout');
     Route::GET('/customers', 'CustomerController@index');
     Route::GET('/discount-cart', 'CustomerController@discount');
+    Route::GET('/cart/reciept', 'CartController@reciept')->name('cart.reciept');
     Route::GET('/income/detail', 'AccountingController@incomeDetail')->name('income.detail');
     Route::GET('/discounts', 'AccountingController@discount')->name('discounts.index');
     Route::GET('/destroy-discount/{id}', 'AccountingController@discountDestroy');

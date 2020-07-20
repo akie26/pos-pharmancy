@@ -74,15 +74,14 @@ class ProductController extends Controller
 
         if(request()->ajax()){
             $rules = array(
-                'drug_name' => 'required|string|max:255',
-                'chemical_name' => 'required|string|max:255',
-                'manufacturer_country' => 'required|string|max:255',
-                'manufacturer_company' => 'required|string|max:255',
-                'distribution_company' => 'required|string|max:255',
+                'item_name' => 'required|string|max:255',
+                'brand' => 'required|string|max:255',
+                'size' => 'required|string|max:255',
+                'detail' => 'string|max:255',
                 'selling_price' => 'required|regex:/^\d+(\.\d{1,2})?$/',
                 'original_price' => 'required|regex:/^\d+(\.\d{1,2})?$/',
                 'quantity' => 'required|integer',
-                'expire_date' => 'required|date',
+                'barcode' => 'required|integer',
     
             );
             $error  = Validator::make($request->all(), $rules);
@@ -91,12 +90,11 @@ class ProductController extends Controller
             return response()->json(['errors' => $error->errors()->all()]);
         }
                 $form_data = array(
-                    'drug_name' => $request->drug_name,
-                    'chemical_name' => $request->chemical_name,
-                    'manufacturer_country' => $request->manufacturer_country,
-                    'manufacturer_company' => $request->manufacturer_company,
-                    'distribution_company' => $request->distribution_company,
-                    'expire_date' => $request->expire_date,
+                    'item_name' => $request->item_name,
+                    'brand' => $request->brand,
+                    'size' => $request->size,
+                    'detail' => $request->detail,
+                    'barcode' => $request->barcode,
                     'original_price' => $request->original_price,
                     'selling_price' => $request->selling_price,
                     'quantity' => $request->quantity,
@@ -114,15 +112,13 @@ class ProductController extends Controller
     public function updateprod(Request $request, Product $product){
 
         $rules = array(
-            'drug_name' => 'required|string|max:255',
-            'chemical_name' => 'required|string|max:255',
-            'manufacturer_country' => 'required|string|max:255',
-            'manufacturer_company' => 'required|string|max:255',
-            'distribution_company' => 'required|string|max:255',
-            'selling_price' => 'required|regex:/^\d+(\.\d{1,2})?$/',
-            'original_price' => 'required|regex:/^\d+(\.\d{1,2})?$/',
-            'quantity' => 'required|integer',
-            'expire_date' => 'required|date',
+            'item_name' => 'required|string|max:255',
+                'brand' => 'required|string|max:255',
+                'size' => 'required|string|max:255',
+                'selling_price' => 'required|regex:/^\d+(\.\d{1,2})?$/',
+                'original_price' => 'required|regex:/^\d+(\.\d{1,2})?$/',
+                'quantity' => 'required|integer',
+                'barcode' => 'required|integer',
 
         );
         $error  = Validator::make($request->all(), $rules);
@@ -131,15 +127,14 @@ class ProductController extends Controller
             return response()->json(['errors' => $error->errors()->all()]);
         }
         $form_data = array(
-            'drug_name' => $request->drug_name,
-            'chemical_name' => $request->chemical_name,
-            'manufacturer_country' => $request->manufacturer_country,
-            'manufacturer_company' => $request->manufacturer_company,
-            'distribution_company' => $request->distribution_company,
-            'expire_date' => $request->expire_date,
-            'original_price' => $request->original_price,
-            'selling_price' => $request->selling_price,
-            'quantity' => $request->quantity,
+                'item_name' => $request->item_name,
+                'brand' => $request->brand,
+                'size' => $request->size,
+                'detail' => $request->detail,
+                'barcode' => $request->barcode,
+                'original_price' => $request->original_price,
+                'selling_price' => $request->selling_price,
+                'quantity' => $request->quantity,
         );
         Product::whereId($request->hidden_id)->update($form_data);
         return response()->json(['success' => 'updated']);

@@ -137,15 +137,12 @@ class AccountingController extends Controller
                 'unitcost' => $item->selling_price,
                 'quantity' => $item->pivot->quantity,
                 'discount' => $data,
-                'product_name' => $item->drug_name,
+                'product_name' => $item->item_name,
                 'total' => $item->pivot->quantity * $item->selling_price,
                 'product_id' => $item->id,
                 ]);
                 $item->quantity = $item->quantity - $item->pivot->quantity;
                 $item->save();
-                if($item->quantity == 0){
-                    $item->delete();
-                }
                 $request->user()->cart()->detach();
             }
             return response()->json(['success' =>'DONE']);

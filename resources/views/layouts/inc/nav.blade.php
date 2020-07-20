@@ -1,37 +1,37 @@
-<nav class="main-header navbar navbar-expand navbar-light justify-content-between">
-  <ul class="navbar-nav">
-    <li class="nav-item">
-      <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-    </li>
-    <li class="nav-item">
-      <a class="navbar-brand ml-5 text-right" style="text-transform: uppercase;font-weight:600" href="#"></a>
-    </li>
-    </ul>
-  
+<!-- Sidebar -->
+<div class="bg-light border-right shadow-sm" id="sidebar-wrapper">
+  <div class="list-group list-group-flush text-center">
+    <div class="sidebar-heading" style="font-size: 18px;letter-spacing:2px;font-weight:600;"><i class="fab fa-pinterest-p"></i></div>
+    <a href="{{route('cart.index')}}" id="store" class="list-group-item list-group-item-action">
+      <i class="fab fa-opencart"></i></a>
+      <a href="{{route('products.index')}}" id="products" class="list-group-item list-group-item-action">
+        <i class="fas fa-tshirt"></i></a>
+        <a href="{{route('income.index')}}" id="income" class="list-group-item list-group-item-action">
+          <i class="fas fa-money-check"></i></a>
+          <a href="{{route('discounts.index')}}" id="discount" class="list-group-item list-group-item-action">
+            <i class="fas fa-percentage"></i></a>
+  </div>
+</div>
+<!-- /#sidebar-wrapper -->
 
-  <ul class="navbar-nav">
-    <li class="nav-item mr-5">
-      <a href="{{ route('cart.index')}}" class="btn btn-out btn-cart">
-        <i class="nav-icon fas fa-shopping-cart"></i>
-        POS CART
-      </a>
-    </li>
-    <li class="nav-item ml-5">
-      @role('admin')
-      <a href="{{route('admin.back')}}" class="btn btn-out" style="font-weight: 600">
-        <i class="fas fa-long-arrow-alt-left"></i>&nbsp;&nbsp;ADMIN PANNEL
-      </a>
-      @else
-      <a href="#" class="btn btn-out" style="font-weight:600" onclick="document.getElementById('logout-form').submit()">
-        <i class="nav-icon fas fa-sign-out-alt"></i>&nbsp;&nbsp;LOGOUT
-        <form action="{{route('logout')}}" method="POST" id="logout-form">
-            @csrf
-        </form>
-    </a>
-      @endhasanyrole
-      
-      
-      
-  </li>
-  </ul>
-</nav>
+<!-- Page Content -->
+<div id="page-content-wrapper">
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm mb-2">
+    
+    <div class="sidebar-heading" style="margin-bottom:-5px; font-size: 19px;letter-spacing:2px;font-weight:600;">PRISMA</div>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" id="nav-link" href="#">HOME<span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  

@@ -34,7 +34,7 @@ class CustomerController extends Controller
             }else{
                 $id = Auth::user()->id;
             }
-            $user = User::find(6);
+            $user = User::find($id);
             return response(
                 $user->discounts()->get()
             ); 
