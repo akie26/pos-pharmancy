@@ -28,7 +28,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
         <li class="nav-item active">
-          <a class="nav-link" id="nav-link" href="#">HOME<span class="sr-only">(current)</span></a>
+          <a class="nav-link" id="nav-link" onclick="document.getElementById('logout-form').submit()" href="#">LOGOUT<span class="sr-only">(current)</span></a>
+          <form action="{{route('logout')}}" method="POST" id="logout-form">
+            @csrf
+        </form>
         </li>
       </ul>
     </div>
