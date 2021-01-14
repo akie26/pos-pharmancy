@@ -9,11 +9,6 @@
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   @yield('css')
-  <style>
-    body{
-      overflow-y: hidden;
-    }
-  </style>
 </head>
 <div class="d-flex" id="wrapper"> 
 @include('layouts.inc.nav')

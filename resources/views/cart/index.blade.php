@@ -2,6 +2,16 @@
 @section('title')
     127.0.0.1
 @endsection
+
+    @section('css')
+        <style>
+            
+    body{
+      overflow-y: hidden;
+    }
+        </style>
+    @endsection
+
 @section('content')
 <div id="cart" class="mt-2"></div>
 @endsection
